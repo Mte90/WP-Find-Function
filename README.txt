@@ -1,20 +1,23 @@
 === Find Function/Class ===
 Contributors: mte90
 Donate link: http://mte90.net/
-Tags: development,find,debug
+Tags: development, find, debug
 Requires at least: 3.9
 Tested up to: 4.2
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simple modal that search the file and row that contain a function or class.
+Search the file and row (on WordPress) that contain a PHP function or class with a click!
 
 == Description ==
 
-Simple modal that search the file and row that contain a function or class.
+You don't find the PHP function or class in a Wordpress system?  
+This plugin add a button on the admin bar that open a simple modal!
 
-The plugin use ReflectionFunction and ReflectionClass of PHP5 to find this info.  
+Check the screenshots!
+
+The plugin use `ReflectionFunction` and `ReflectionClass` of PHP5 to find this info.  
 
 == Installation ==
 
@@ -31,7 +34,7 @@ This solution is useful for not search in all of your files.
 
 = How work =
 
-Simple ajax request in the same page of the request that inject the data and show in the modal.
+Simple ajax request in the same page that inject the data and show it in the modal.
 
 == Screenshots ==
 
