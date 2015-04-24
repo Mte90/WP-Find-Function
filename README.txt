@@ -17,6 +17,8 @@ This plugin add a button on the admin bar that open a simple modal!
 
 Check the screenshots!
 
+GitHub: [https://github.com/Mte90/WP-Find-Function](https://github.com/Mte90/WP-Find-Function)
+
 The plugin use `ReflectionFunction` and `ReflectionClass` of PHP5 to find this info.  
 
 == Installation ==
