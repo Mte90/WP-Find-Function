@@ -3,6 +3,11 @@ jQuery(document).ready(function () {
   jQuery('#wpadminbar .findfunction-menu a').addClass('thickbox');
   //Fix some problem about thickbox
   jQuery('body').removeClass('index-php');
+  jQuery('#findfunction-input').keypress(function (e) {
+    if (e.which === 13) {
+      jQuery('#findfunction-button').trigger('click');
+    }
+  });
   //Search the function
   jQuery('#findfunction-button').click(function () {
     //Fix for the width

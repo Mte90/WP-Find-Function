@@ -4,7 +4,7 @@ Donate link: http://mte90.net/
 Tags: development, find, debug
 Requires at least: 3.9
 Tested up to: 4.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,5 +44,9 @@ Simple ajax request in the same page that inject the data and show it in the mod
 
 == Changelog ==
 
+= 1.0.1 =
+Support for enter key on the search field  
+Text field escaped  
+Show the parameters and the method if avalaible
 = 1.0 =
 First Release

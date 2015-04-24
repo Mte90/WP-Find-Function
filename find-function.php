@@ -4,7 +4,7 @@
   Plugin Name: Find Function or Class
   Plugin URI: http://mte90.net
   Description: Found the function or class on the page (file and row inline) that you are visiting
-  Version: 1.0.0
+  Version: 1.0.1
   Author: Mte90
   Author URI: http://mte90.net
   License: GPLv2 or later
@@ -117,7 +117,7 @@ class Find_Function {
 				<p style="margin-bottom:0;">
 					Results:
 				</p>
-				<p id="find-function-found" style="margin-top:0;">
+				<p id="find-function-found" style="margin-top:-5px;">
 				</p>
 		</div>';
 	}
@@ -132,25 +132,42 @@ class Find_Function {
 		echo '<div id="find-function-result">';
 		//The function exist?
 		try {
-			$reflFunc = new ReflectionFunction( $_GET[ 'function' ] );
-			echo 'File that contain Function <b>' . $_GET[ 'function' ] . '</b>: <i>' . $reflFunc->getFileName() . '</i>';
+			$reflFunc = new ReflectionFunction( esc_html( $_GET[ 'function' ] ) );
+			echo 'File that contain Function <b>' . esc_html( $_GET[ 'function' ] ) . '</b>: <i>' . $reflFunc->getFileName() . '</i>';
 			echo '<br>';
 			echo 'Row: <b>' . $reflFunc->getStartLine() . '</b>';
+			if ( !empty( $reflFunc->getParameters() ) ) {
+				foreach ( $reflFunc->getParameters() as $param ) {
+					echo '<br>'.$param;
+				}
+			}
 		} catch ( Exception $e ) {
-			echo '<p><b>Function <i>' . $_GET[ 'function' ] . '</i> not found :-(</b><p>';
+			echo '<p><b>Function <i>' . esc_html( $_GET[ 'function' ] ) . '</i> not found :-(</b><p>';
 		}
 		//The class exist?
 		try {
-			$reflClass = new ReflectionClass( $_GET[ 'function' ] );
-			echo 'File that contain Class <b>' . $_GET[ 'function' ] . '</b>: <i>' . $reflClass->getFileName() . '</i>';
+			$reflClass = new ReflectionClass( esc_html( $_GET[ 'function' ] ) );
+			echo 'File that contain Class <b>' . esc_html( $_GET[ 'function' ] ) . '</b>: <i>' . $reflClass->getFileName() . '</i>';
 			echo '<br>';
 			echo 'Row: <b>' . $reflClass->getStartLine() . '</b>';
+			if ( !empty( $reflClass->getConstructor()->getParameters() ) ) {
+				foreach ( $reflClass->getConstructor()->getParameters() as $param ) {
+					echo '<br>'.$param;
+				}
+			}
+			if ( !empty($reflClass->getMethods() ) ) {
+				echo '<br>Methods:<br>';
+				foreach ( $reflClass->getMethods() as $param ) {
+					echo '&nbsp;&nbsp;'.$param->name . '<br>';
+				}
+			}
 		} catch ( Exception $e ) {
-			echo '<p><b>Class <i>' . $_GET[ 'function' ] . '</i> not found :-(</b></p>';
+			echo '<p><b>Class <i>' . esc_html( $_GET[ 'function' ] ) . '</i> not found :-(</b></p>';
 		}
 		echo '</div>';
 	}
 
 }
+
 //Load the plugin
 add_action( 'plugins_loaded', array( 'Find_Function', 'get_instance' ) );
