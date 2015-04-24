@@ -136,9 +136,10 @@ class Find_Function {
 			echo 'File that contain Function <b>' . esc_html( $_GET[ 'function' ] ) . '</b>: <i>' . $reflFunc->getFileName() . '</i>';
 			echo '<br>';
 			echo 'Row: <b>' . $reflFunc->getStartLine() . '</b>';
-			if ( !empty( $reflFunc->getParameters() ) ) {
-				foreach ( $reflFunc->getParameters() as $param ) {
-					echo '<br>'.$param;
+			$temp = $reflFunc->getParameters();
+			if ( !empty( $temp ) ) {
+				foreach ( $temp as $param ) {
+					echo '<br>' . $param;
 				}
 			}
 		} catch ( Exception $e ) {
@@ -150,15 +151,17 @@ class Find_Function {
 			echo 'File that contain Class <b>' . esc_html( $_GET[ 'function' ] ) . '</b>: <i>' . $reflClass->getFileName() . '</i>';
 			echo '<br>';
 			echo 'Row: <b>' . $reflClass->getStartLine() . '</b>';
-			if ( !empty( $reflClass->getConstructor()->getParameters() ) ) {
-				foreach ( $reflClass->getConstructor()->getParameters() as $param ) {
-					echo '<br>'.$param;
+			$temp = $reflClass->getConstructor()->getParameters();
+			if ( !empty( $temp ) ) {
+				foreach ( $temp as $param ) {
+					echo '<br>' . $param;
 				}
 			}
-			if ( !empty($reflClass->getMethods() ) ) {
+			$temp = $reflClass->getMethods();
+			if ( !empty( $temp ) ) {
 				echo '<br>Methods:<br>';
-				foreach ( $reflClass->getMethods() as $param ) {
-					echo '&nbsp;&nbsp;'.$param->name . '<br>';
+				foreach ( $temp as $param ) {
+					echo '&nbsp;&nbsp;' . $param->name . '<br>';
 				}
 			}
 		} catch ( Exception $e ) {
